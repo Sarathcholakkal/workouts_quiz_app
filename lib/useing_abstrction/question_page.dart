@@ -1,29 +1,26 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/question_class.dart';
+import 'package:quiz_app/useing_abstrction/general_question.dart';
 
-class Questionbank extends StatefulWidget {
-  const Questionbank({super.key});
+GeneralQuestion questions = GeneralQuestion();
+//? it's single poing to access quesion it should be change witout change code below.
+//? general Question must change to technical Question  if keep same object name here no need to change entaier code in here . this use of abstaction,
+//? code break to small module  flexibility and reusebility.
+
+class QuestionPage extends StatefulWidget {
+  const QuestionPage({super.key});
 
   @override
-  _QuestionbankState createState() => _QuestionbankState();
+  _QuestionPageState createState() => _QuestionPageState();
 }
 
-class _QuestionbankState extends State<Questionbank> {
+class _QuestionPageState extends State<QuestionPage> {
   List<Widget> scoreBoard = [];
-  List<QuestionClass> questionbank = [
-    QuestionClass(
-        question: 'You can lead a cow down stairs but not up stairs.',
-        answer: false),
-    QuestionClass(
-        question: 'Approximately one quarter of human bones are in the feet.',
-        answer: true),
-    QuestionClass(question: 'A slug\'s blood is green.', answer: true)
-  ];
 
   int questionNumber = 0;
 
   void checkAnswer(bool userPickedAnswer) {
-    bool correctAnswer = questionbank[questionNumber].answer;
+    bool correctAnswer = questions.generalQuestionbank[questionNumber].answer;
     setState(() {
       if (userPickedAnswer == correctAnswer) {
         scoreBoard.add(
@@ -41,7 +38,8 @@ class _QuestionbankState extends State<Questionbank> {
         );
       }
       // Increment question number and wrap around using modulus
-      questionNumber = (questionNumber + 1) % questionbank.length;
+      questionNumber =
+          (questionNumber + 1) % questions.generalQuestionbank.length;
     });
   }
 
@@ -59,7 +57,7 @@ class _QuestionbankState extends State<Questionbank> {
               padding: EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  questionbank[questionNumber].question,
+                  questions.generalQuestionbank[questionNumber].question,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25.0,
@@ -109,8 +107,15 @@ class _QuestionbankState extends State<Questionbank> {
               ),
             ),
           ),
-          Row(
-            children: scoreBoard,
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              color: Colors.white,
+              height: 30,
+              child: Row(
+                children: scoreBoard,
+              ),
+            ),
           ),
         ],
       ),
