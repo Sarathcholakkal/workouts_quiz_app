@@ -1,7 +1,8 @@
 import 'package:quiz_app/useing_abstrction/general_question_class.dart';
 
-class GeneralQuestion {
-  List<GeneralQuestionClass> generalQuestionbank = [
+class EncapuslatedQuestion {
+  int _questionNumber = 0;
+  List<GeneralQuestionClass> _generalQuestionbank = [
     GeneralQuestionClass('Some cats are actually allergic to humans', true),
     GeneralQuestionClass(
         'You can lead a cow down stairs but not up stairs.', false),
@@ -32,4 +33,26 @@ class GeneralQuestion {
         'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
         true),
   ];
+  void nextQuestion() {
+    if (_questionNumber < _generalQuestionbank.length - 1) {
+      _questionNumber++;
+    } else {
+      print("question over");
+    }
+  }
+
+  String getQuestion() {
+    return _generalQuestionbank[_questionNumber].question;
+  }
+
+  bool getAnswer() {
+    return _generalQuestionbank[_questionNumber].answer;
+  }
+
+  bool isQuestionOver() {
+    if (_questionNumber < _generalQuestionbank.length - 1) {
+      return true;
+    }
+    return false;
+  }
 }

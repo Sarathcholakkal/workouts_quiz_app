@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/useing_abstrction/question_page.dart';
+import 'package:quiz_app/using_ensulation/question_view.dart';
 
 void main() => runApp(Quizzler());
 
@@ -12,7 +12,8 @@ class Quizzler extends StatelessWidget {
         body: SafeArea(
           child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: QuestionPage()
+              child: QuestionView()
+              // QuestionPage()
               //  Questionbank(),
               ),
         ),
