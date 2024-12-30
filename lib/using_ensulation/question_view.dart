@@ -27,7 +27,7 @@ class _QuestionViewState extends State<QuestionView> {
         scoreBoard.add(
           Icon(
             Icons.close,
-            color: Colors.red,
+            color: Colors.pink,
           ),
         );
       }
@@ -119,3 +119,4 @@ class _QuestionViewState extends State<QuestionView> {
     );
   }
 }
+// staged file

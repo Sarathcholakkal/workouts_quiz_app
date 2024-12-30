@@ -8,10 +8,10 @@ class Quizzler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: Colors.grey.shade800,
         body: SafeArea(
           child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              padding: EdgeInsets.symmetric(horizontal: 10.1),
               child: QuestionView()
               // QuestionPage()
               //  Questionbank(),
@@ -21,3 +21,5 @@ class Quizzler extends StatelessWidget {
     );
   }
 }
+/// untraked file
+/// 
